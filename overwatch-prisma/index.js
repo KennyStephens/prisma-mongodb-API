@@ -4,7 +4,9 @@ const { prisma } = require('./generated/prisma-client')
 async function main() {
 
   // // Create a new user called `Alice`
-  const newUser = await prisma.createUser({ name: 'Alice' })
+
+  // console.log(prisma);
+  const newUser = await prisma.createUser({ name: 'Kenny', weapons: 'slappies', quote: 'get slapped', class: 'slapper', imageUrl: 'https://www.kennystephens.com/img/kennystephens.1ae72e2e.gif' })
   console.log(`Created new user: ${newUser.name} (ID: ${newUser.id})`)
 
   // Read all users from the database and print them to the console

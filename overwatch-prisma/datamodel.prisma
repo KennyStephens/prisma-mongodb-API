@@ -1,4 +1,4 @@
-type Owcharacter @db(name: "owcharacters") {
+type OverwatchPrisma {
   _id: ID! @id
   __v: Int
   class: String
