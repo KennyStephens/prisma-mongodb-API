@@ -14,7 +14,7 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
 export interface Exists {
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  overwatchPrisma: (where?: OverwatchPrismaWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -36,51 +36,65 @@ export interface Prisma {
    * Queries
    */
 
-  user: (where: UserWhereUniqueInput) => UserPromise;
-  users: (
+  overwatchPrisma: (
+    where: OverwatchPrismaWhereUniqueInput
+  ) => OverwatchPrismaPromise;
+  overwatchPrismas: (
     args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
+      where?: OverwatchPrismaWhereInput;
+      orderBy?: OverwatchPrismaOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
       first?: Int;
       last?: Int;
     }
-  ) => FragmentableArray<User>;
-  usersConnection: (
+  ) => FragmentableArray<OverwatchPrisma>;
+  overwatchPrismasConnection: (
     args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
+      where?: OverwatchPrismaWhereInput;
+      orderBy?: OverwatchPrismaOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
       first?: Int;
       last?: Int;
     }
-  ) => UserConnectionPromise;
+  ) => OverwatchPrismaConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createUser: (data: UserCreateInput) => UserPromise;
-  updateUser: (
-    args: { data: UserUpdateInput; where: UserWhereUniqueInput }
-  ) => UserPromise;
-  updateManyUsers: (
-    args: { data: UserUpdateManyMutationInput; where?: UserWhereInput }
-  ) => BatchPayloadPromise;
-  upsertUser: (
+  createOverwatchPrisma: (
+    data: OverwatchPrismaCreateInput
+  ) => OverwatchPrismaPromise;
+  updateOverwatchPrisma: (
     args: {
-      where: UserWhereUniqueInput;
-      create: UserCreateInput;
-      update: UserUpdateInput;
+      data: OverwatchPrismaUpdateInput;
+      where: OverwatchPrismaWhereUniqueInput;
     }
-  ) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  ) => OverwatchPrismaPromise;
+  updateManyOverwatchPrismas: (
+    args: {
+      data: OverwatchPrismaUpdateManyMutationInput;
+      where?: OverwatchPrismaWhereInput;
+    }
+  ) => BatchPayloadPromise;
+  upsertOverwatchPrisma: (
+    args: {
+      where: OverwatchPrismaWhereUniqueInput;
+      create: OverwatchPrismaCreateInput;
+      update: OverwatchPrismaUpdateInput;
+    }
+  ) => OverwatchPrismaPromise;
+  deleteOverwatchPrisma: (
+    where: OverwatchPrismaWhereUniqueInput
+  ) => OverwatchPrismaPromise;
+  deleteManyOverwatchPrismas: (
+    where?: OverwatchPrismaWhereInput
+  ) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -90,9 +104,9 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  overwatchPrisma: (
+    where?: OverwatchPrismaSubscriptionWhereInput
+  ) => OverwatchPrismaSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -103,75 +117,69 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type UserOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
+export type OverwatchPrismaOrderByInput =
+  | "_id_ASC"
+  | "_id_DESC"
+  | "__v_ASC"
+  | "__v_DESC"
   | "class_ASC"
   | "class_DESC"
-  | "weapons_ASC"
-  | "weapons_DESC"
+  | "imageUrl_ASC"
+  | "imageUrl_DESC"
+  | "name_ASC"
+  | "name_DESC"
   | "quote_ASC"
   | "quote_DESC"
-  | "imageUrl_ASC"
-  | "imageUrl_DESC";
+  | "ultimate_ASC"
+  | "ultimate_DESC"
+  | "weapon_ASC"
+  | "weapon_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserCreateInput {
-  name: String;
+export interface OverwatchPrismaCreateInput {
+  __v?: Int;
   class?: String;
-  weapons?: String;
-  quote?: String;
   imageUrl?: String;
+  name?: String;
+  quote?: String;
+  ultimate?: String;
+  weapon?: String;
 }
 
-export interface UserUpdateInput {
-  name?: String;
+export interface OverwatchPrismaUpdateInput {
+  __v?: Int;
   class?: String;
-  weapons?: String;
-  quote?: String;
   imageUrl?: String;
+  name?: String;
+  quote?: String;
+  ultimate?: String;
+  weapon?: String;
 }
 
-export interface UserUpdateManyMutationInput {
-  name?: String;
-  class?: String;
-  weapons?: String;
-  quote?: String;
-  imageUrl?: String;
-}
-
-export interface UserWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
+export interface OverwatchPrismaWhereInput {
+  _id?: ID_Input;
+  _id_not?: ID_Input;
+  _id_in?: ID_Input[] | ID_Input;
+  _id_not_in?: ID_Input[] | ID_Input;
+  _id_lt?: ID_Input;
+  _id_lte?: ID_Input;
+  _id_gt?: ID_Input;
+  _id_gte?: ID_Input;
+  _id_contains?: ID_Input;
+  _id_not_contains?: ID_Input;
+  _id_starts_with?: ID_Input;
+  _id_not_starts_with?: ID_Input;
+  _id_ends_with?: ID_Input;
+  _id_not_ends_with?: ID_Input;
+  __v?: Int;
+  __v_not?: Int;
+  __v_in?: Int[] | Int;
+  __v_not_in?: Int[] | Int;
+  __v_lt?: Int;
+  __v_lte?: Int;
+  __v_gt?: Int;
+  __v_gte?: Int;
   class?: String;
   class_not?: String;
   class_in?: String[] | String;
@@ -186,34 +194,6 @@ export interface UserWhereInput {
   class_not_starts_with?: String;
   class_ends_with?: String;
   class_not_ends_with?: String;
-  weapons?: String;
-  weapons_not?: String;
-  weapons_in?: String[] | String;
-  weapons_not_in?: String[] | String;
-  weapons_lt?: String;
-  weapons_lte?: String;
-  weapons_gt?: String;
-  weapons_gte?: String;
-  weapons_contains?: String;
-  weapons_not_contains?: String;
-  weapons_starts_with?: String;
-  weapons_not_starts_with?: String;
-  weapons_ends_with?: String;
-  weapons_not_ends_with?: String;
-  quote?: String;
-  quote_not?: String;
-  quote_in?: String[] | String;
-  quote_not_in?: String[] | String;
-  quote_lt?: String;
-  quote_lte?: String;
-  quote_gt?: String;
-  quote_gte?: String;
-  quote_contains?: String;
-  quote_not_contains?: String;
-  quote_starts_with?: String;
-  quote_not_starts_with?: String;
-  quote_ends_with?: String;
-  quote_not_ends_with?: String;
   imageUrl?: String;
   imageUrl_not?: String;
   imageUrl_in?: String[] | String;
@@ -228,38 +208,106 @@ export interface UserWhereInput {
   imageUrl_not_starts_with?: String;
   imageUrl_ends_with?: String;
   imageUrl_not_ends_with?: String;
-  AND?: UserWhereInput[] | UserWhereInput;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  quote?: String;
+  quote_not?: String;
+  quote_in?: String[] | String;
+  quote_not_in?: String[] | String;
+  quote_lt?: String;
+  quote_lte?: String;
+  quote_gt?: String;
+  quote_gte?: String;
+  quote_contains?: String;
+  quote_not_contains?: String;
+  quote_starts_with?: String;
+  quote_not_starts_with?: String;
+  quote_ends_with?: String;
+  quote_not_ends_with?: String;
+  ultimate?: String;
+  ultimate_not?: String;
+  ultimate_in?: String[] | String;
+  ultimate_not_in?: String[] | String;
+  ultimate_lt?: String;
+  ultimate_lte?: String;
+  ultimate_gt?: String;
+  ultimate_gte?: String;
+  ultimate_contains?: String;
+  ultimate_not_contains?: String;
+  ultimate_starts_with?: String;
+  ultimate_not_starts_with?: String;
+  ultimate_ends_with?: String;
+  ultimate_not_ends_with?: String;
+  weapon?: String;
+  weapon_not?: String;
+  weapon_in?: String[] | String;
+  weapon_not_in?: String[] | String;
+  weapon_lt?: String;
+  weapon_lte?: String;
+  weapon_gt?: String;
+  weapon_gte?: String;
+  weapon_contains?: String;
+  weapon_not_contains?: String;
+  weapon_starts_with?: String;
+  weapon_not_starts_with?: String;
+  weapon_ends_with?: String;
+  weapon_not_ends_with?: String;
+  AND?: OverwatchPrismaWhereInput[] | OverwatchPrismaWhereInput;
 }
 
-export interface UserSubscriptionWhereInput {
+export interface OverwatchPrismaUpdateManyMutationInput {
+  __v?: Int;
+  class?: String;
+  imageUrl?: String;
+  name?: String;
+  quote?: String;
+  ultimate?: String;
+  weapon?: String;
+}
+
+export interface OverwatchPrismaSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  node?: OverwatchPrismaWhereInput;
+  AND?:
+    | OverwatchPrismaSubscriptionWhereInput[]
+    | OverwatchPrismaSubscriptionWhereInput;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
+export type OverwatchPrismaWhereUniqueInput = AtLeastOne<{
+  _id: ID_Input;
 }>;
 
 export interface NodeNode {
   id: ID_Output;
 }
 
-export interface AggregateUser {
+export interface AggregateOverwatchPrisma {
   count: Int;
 }
 
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface AggregateOverwatchPrismaPromise
+  extends Promise<AggregateOverwatchPrisma>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
+export interface AggregateOverwatchPrismaSubscription
+  extends Promise<AsyncIterator<AggregateOverwatchPrisma>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -280,127 +328,143 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface UserPreviousValues {
-  id: ID_Output;
-  name: String;
+export interface OverwatchPrismaPreviousValues {
+  _id: ID_Output;
+  __v?: Int;
   class?: String;
-  weapons?: String;
-  quote?: String;
   imageUrl?: String;
+  name?: String;
+  quote?: String;
+  ultimate?: String;
+  weapon?: String;
 }
 
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
+export interface OverwatchPrismaPreviousValuesPromise
+  extends Promise<OverwatchPrismaPreviousValues>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  _id: () => Promise<ID_Output>;
+  __v: () => Promise<Int>;
   class: () => Promise<String>;
-  weapons: () => Promise<String>;
-  quote: () => Promise<String>;
   imageUrl: () => Promise<String>;
+  name: () => Promise<String>;
+  quote: () => Promise<String>;
+  ultimate: () => Promise<String>;
+  weapon: () => Promise<String>;
 }
 
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
+export interface OverwatchPrismaPreviousValuesSubscription
+  extends Promise<AsyncIterator<OverwatchPrismaPreviousValues>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  _id: () => Promise<AsyncIterator<ID_Output>>;
+  __v: () => Promise<AsyncIterator<Int>>;
   class: () => Promise<AsyncIterator<String>>;
-  weapons: () => Promise<AsyncIterator<String>>;
-  quote: () => Promise<AsyncIterator<String>>;
   imageUrl: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  quote: () => Promise<AsyncIterator<String>>;
+  ultimate: () => Promise<AsyncIterator<String>>;
+  weapon: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserEdge {
-  node: User;
+export interface OverwatchPrismaEdge {
+  node: OverwatchPrisma;
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
+export interface OverwatchPrismaEdgePromise
+  extends Promise<OverwatchPrismaEdge>,
+    Fragmentable {
+  node: <T = OverwatchPrismaPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface OverwatchPrismaEdgeSubscription
+  extends Promise<AsyncIterator<OverwatchPrismaEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = OverwatchPrismaSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserSubscriptionPayload {
+export interface OverwatchPrismaSubscriptionPayload {
   mutation: MutationType;
-  node: User;
+  node: OverwatchPrisma;
   updatedFields: String[];
-  previousValues: UserPreviousValues;
+  previousValues: OverwatchPrismaPreviousValues;
 }
 
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
+export interface OverwatchPrismaSubscriptionPayloadPromise
+  extends Promise<OverwatchPrismaSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
+  node: <T = OverwatchPrismaPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
+  previousValues: <T = OverwatchPrismaPreviousValuesPromise>() => T;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+export interface OverwatchPrismaSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<OverwatchPrismaSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
+  node: <T = OverwatchPrismaSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  previousValues: <T = OverwatchPrismaPreviousValuesSubscription>() => T;
 }
 
-export interface User {
-  id: ID_Output;
-  name: String;
+export interface OverwatchPrisma {
+  _id: ID_Output;
+  __v?: Int;
   class?: String;
-  weapons?: String;
-  quote?: String;
   imageUrl?: String;
+  name?: String;
+  quote?: String;
+  ultimate?: String;
+  weapon?: String;
 }
 
-export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  class: () => Promise<String>;
-  weapons: () => Promise<String>;
-  quote: () => Promise<String>;
-  imageUrl: () => Promise<String>;
-}
-
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
+export interface OverwatchPrismaPromise
+  extends Promise<OverwatchPrisma>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  _id: () => Promise<ID_Output>;
+  __v: () => Promise<Int>;
+  class: () => Promise<String>;
+  imageUrl: () => Promise<String>;
+  name: () => Promise<String>;
+  quote: () => Promise<String>;
+  ultimate: () => Promise<String>;
+  weapon: () => Promise<String>;
+}
+
+export interface OverwatchPrismaSubscription
+  extends Promise<AsyncIterator<OverwatchPrisma>>,
+    Fragmentable {
+  _id: () => Promise<AsyncIterator<ID_Output>>;
+  __v: () => Promise<AsyncIterator<Int>>;
   class: () => Promise<AsyncIterator<String>>;
-  weapons: () => Promise<AsyncIterator<String>>;
-  quote: () => Promise<AsyncIterator<String>>;
   imageUrl: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  quote: () => Promise<AsyncIterator<String>>;
+  ultimate: () => Promise<AsyncIterator<String>>;
+  weapon: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserConnection {
+export interface OverwatchPrismaConnection {
   pageInfo: PageInfo;
-  edges: UserEdge[];
+  edges: OverwatchPrismaEdge[];
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface OverwatchPrismaConnectionPromise
+  extends Promise<OverwatchPrismaConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  edges: <T = FragmentableArray<OverwatchPrismaEdge>>() => T;
+  aggregate: <T = AggregateOverwatchPrismaPromise>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface OverwatchPrismaConnectionSubscription
+  extends Promise<AsyncIterator<OverwatchPrismaConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<OverwatchPrismaEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateOverwatchPrismaSubscription>() => T;
 }
 
 export interface PageInfo {
@@ -427,9 +491,9 @@ export interface PageInfoSubscription
 }
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
-export type String = string;
+export type Int = number;
 
 export type Long = string;
 
@@ -440,9 +504,9 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type Int = number;
+export type String = string;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
@@ -455,7 +519,7 @@ export type Boolean = boolean;
 
 export const models: Model[] = [
   {
-    name: "User",
+    name: "OverwatchPrisma",
     embedded: false
   }
 ];
