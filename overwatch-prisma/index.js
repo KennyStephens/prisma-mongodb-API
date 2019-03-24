@@ -6,8 +6,8 @@ async function main() {
   // // Create a new user called `Alice`
 
   // console.log(prisma);
-  // const newUser = await prisma.createOverwatchPrisma({ name: 'kenny', class: 'support'})
-  // console.log(`Created new user: ${newUser.name} (ID: ${newUser.id})`)
+  const newUser = await prisma.createOwcharacter({ name: 'kenny', class: 'friendo'})
+  console.log(`Created new user: ${newUser.name} (ID: ${newUser.id})`)
 
   // Read all users from the database and print them to the console
   const allUsers = await prisma.owcharacters()
