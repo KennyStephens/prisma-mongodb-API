@@ -13,6 +13,5 @@ services:
         databases:
           default:
             connector: mongo
-            uri: >-
-              mongodb+srv://kenkneesteefens:Nodecourse@cluster0-drydi.mongodb.net/overwatch
+            uri: mongodb+srv://kenkneesteefens:Nodecourse@cluster0-drydi.mongodb.net/test?retryWrites=true
             database: overwatch
