@@ -3,8 +3,6 @@ const { prisma } = require('./generated/prisma-client')
 // A `main` function so that we can use async/await
 async function main() {
 
-  // // Create a new user called `Alice`
-
   // console.log(prisma);
   const newUser = await prisma.createOwcharacter({ name: 'kenny', class: 'friendo'})
   console.log(`Created new user: ${newUser.name} (ID: ${newUser.id})`)
