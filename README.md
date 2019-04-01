@@ -8,7 +8,7 @@ Then go to localhost:4466 to test mutations
 
 Here are some example queries and mutations:
 
-```query getAllChars {
+`query getAllChars {
   owcharacters {
     _id
     name
@@ -39,7 +39,7 @@ Here are some example queries and mutations:
     imageUrl
     class
   }
-}```
+}`
 
 `mutation createChar {
   createOwcharacter(data: { name: "Bob Bobberson" }) {
