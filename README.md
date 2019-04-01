@@ -1,10 +1,17 @@
 ## Overatch Prisma Surver
 
 To start server just run the following: 
-1. `docker-compose up -d`
-2. `npm run deploy`
+1. `Clone repo`
+2. `cd into project folder`
+3. `npm install`
+4. `docker-compose up -d`
+5. `npm start
 
-Then go to localhost:4466 to test mutations
+or
+
+
+
+Then go to localhost:4000 to test mutations
 
 Here are some example queries and queries and mutations:
 
