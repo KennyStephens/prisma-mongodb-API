@@ -8,7 +8,7 @@ Then go to localhost:4466 to test mutations
 
 Here are some example queries and queries and mutations:
 
-**GET QUERIES***
+**GET QUERIES**
 ```
 query getAllChars {
   owcharacters {
