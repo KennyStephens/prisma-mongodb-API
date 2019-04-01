@@ -111,8 +111,6 @@ export interface ClientConstructor<T> {
 export type OwcharacterOrderByInput =
   | "_id_ASC"
   | "_id_DESC"
-  | "__v_ASC"
-  | "__v_DESC"
   | "class_ASC"
   | "class_DESC"
   | "imageUrl_ASC"
@@ -129,7 +127,6 @@ export type OwcharacterOrderByInput =
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface OwcharacterCreateInput {
-  __v?: Int;
   class?: String;
   imageUrl?: String;
   name?: String;
@@ -139,7 +136,15 @@ export interface OwcharacterCreateInput {
 }
 
 export interface OwcharacterUpdateInput {
-  __v?: Int;
+  class?: String;
+  imageUrl?: String;
+  name?: String;
+  quote?: String;
+  ultimate?: String;
+  weapon?: String;
+}
+
+export interface OwcharacterUpdateManyMutationInput {
   class?: String;
   imageUrl?: String;
   name?: String;
@@ -163,14 +168,6 @@ export interface OwcharacterWhereInput {
   _id_not_starts_with?: ID_Input;
   _id_ends_with?: ID_Input;
   _id_not_ends_with?: ID_Input;
-  __v?: Int;
-  __v_not?: Int;
-  __v_in?: Int[] | Int;
-  __v_not_in?: Int[] | Int;
-  __v_lt?: Int;
-  __v_lte?: Int;
-  __v_gt?: Int;
-  __v_gte?: Int;
   class?: String;
   class_not?: String;
   class_in?: String[] | String;
@@ -258,16 +255,6 @@ export interface OwcharacterWhereInput {
   AND?: OwcharacterWhereInput[] | OwcharacterWhereInput;
 }
 
-export interface OwcharacterUpdateManyMutationInput {
-  __v?: Int;
-  class?: String;
-  imageUrl?: String;
-  name?: String;
-  quote?: String;
-  ultimate?: String;
-  weapon?: String;
-}
-
 export interface OwcharacterSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
@@ -319,7 +306,6 @@ export interface BatchPayloadSubscription
 
 export interface OwcharacterPreviousValues {
   _id: ID_Output;
-  __v?: Int;
   class?: String;
   imageUrl?: String;
   name?: String;
@@ -332,7 +318,6 @@ export interface OwcharacterPreviousValuesPromise
   extends Promise<OwcharacterPreviousValues>,
     Fragmentable {
   _id: () => Promise<ID_Output>;
-  __v: () => Promise<Int>;
   class: () => Promise<String>;
   imageUrl: () => Promise<String>;
   name: () => Promise<String>;
@@ -345,7 +330,6 @@ export interface OwcharacterPreviousValuesSubscription
   extends Promise<AsyncIterator<OwcharacterPreviousValues>>,
     Fragmentable {
   _id: () => Promise<AsyncIterator<ID_Output>>;
-  __v: () => Promise<AsyncIterator<Int>>;
   class: () => Promise<AsyncIterator<String>>;
   imageUrl: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -400,7 +384,6 @@ export interface OwcharacterSubscriptionPayloadSubscription
 
 export interface Owcharacter {
   _id: ID_Output;
-  __v?: Int;
   class?: String;
   imageUrl?: String;
   name?: String;
@@ -411,7 +394,6 @@ export interface Owcharacter {
 
 export interface OwcharacterPromise extends Promise<Owcharacter>, Fragmentable {
   _id: () => Promise<ID_Output>;
-  __v: () => Promise<Int>;
   class: () => Promise<String>;
   imageUrl: () => Promise<String>;
   name: () => Promise<String>;
@@ -424,7 +406,6 @@ export interface OwcharacterSubscription
   extends Promise<AsyncIterator<Owcharacter>>,
     Fragmentable {
   _id: () => Promise<AsyncIterator<ID_Output>>;
-  __v: () => Promise<AsyncIterator<Int>>;
   class: () => Promise<AsyncIterator<String>>;
   imageUrl: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -478,9 +459,9 @@ export interface PageInfoSubscription
 }
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type Int = number;
+export type String = string;
 
 export type Long = string;
 
@@ -491,9 +472,9 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
-export type String = string;
+export type Int = number;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.

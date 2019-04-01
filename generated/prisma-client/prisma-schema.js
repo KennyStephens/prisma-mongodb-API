@@ -34,7 +34,6 @@ interface Node {
 
 type Owcharacter {
   _id: ID!
-  __v: Int
   class: String
   imageUrl: String
   name: String
@@ -50,7 +49,6 @@ type OwcharacterConnection {
 }
 
 input OwcharacterCreateInput {
-  __v: Int
   class: String
   imageUrl: String
   name: String
@@ -67,8 +65,6 @@ type OwcharacterEdge {
 enum OwcharacterOrderByInput {
   _id_ASC
   _id_DESC
-  __v_ASC
-  __v_DESC
   class_ASC
   class_DESC
   imageUrl_ASC
@@ -85,7 +81,6 @@ enum OwcharacterOrderByInput {
 
 type OwcharacterPreviousValues {
   _id: ID!
-  __v: Int
   class: String
   imageUrl: String
   name: String
@@ -111,7 +106,6 @@ input OwcharacterSubscriptionWhereInput {
 }
 
 input OwcharacterUpdateInput {
-  __v: Int
   class: String
   imageUrl: String
   name: String
@@ -121,7 +115,6 @@ input OwcharacterUpdateInput {
 }
 
 input OwcharacterUpdateManyMutationInput {
-  __v: Int
   class: String
   imageUrl: String
   name: String
@@ -145,14 +138,6 @@ input OwcharacterWhereInput {
   _id_not_starts_with: ID
   _id_ends_with: ID
   _id_not_ends_with: ID
-  __v: Int
-  __v_not: Int
-  __v_in: [Int!]
-  __v_not_in: [Int!]
-  __v_lt: Int
-  __v_lte: Int
-  __v_gt: Int
-  __v_gte: Int
   class: String
   class_not: String
   class_in: [String!]
