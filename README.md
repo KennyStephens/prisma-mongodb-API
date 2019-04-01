@@ -7,10 +7,6 @@ To start server just run the following:
 4. `docker-compose up -d`
 5. `npm start
 
-or
-
-
-
 Then go to localhost:4000 to test mutations
 
 Here are some example queries and queries and mutations:
