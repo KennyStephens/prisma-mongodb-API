@@ -7,6 +7,8 @@ To start server just run the following:
 Then go to localhost:4466 to test mutations
 
 Here are some example queries and queries and mutations:
+
+**GET QUERIES***
 ```
 query getAllChars {
   owcharacters {
@@ -40,7 +42,10 @@ query getCharByClass {
     class
   }
 }
+```
 
+**MUTATIONS**
+```
 mutation createChar {
   createOwcharacter(data: { name: "Bob Bobberson" }) {
     name
