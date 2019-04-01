@@ -30,7 +30,7 @@ Here are some example queries and mutations:
   }
 }`
 
-`query getCharByClass {
+```query getCharByClass {
   owcharacters(where: { class: "Support" }) {
     _id
     name
@@ -39,7 +39,7 @@ Here are some example queries and mutations:
     imageUrl
     class
   }
-}`
+}```
 
 `mutation createChar {
   createOwcharacter(data: { name: "Bob Bobberson" }) {
