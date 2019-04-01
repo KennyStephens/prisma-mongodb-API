@@ -1,6 +1,5 @@
 type Owcharacter @db(name: "owcharacters") {
   _id: ID! @id
-  __v: Int
   class: String
   imageUrl: String
   name: String
