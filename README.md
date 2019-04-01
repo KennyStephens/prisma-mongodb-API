@@ -7,8 +7,8 @@ To start server just run the following:
 Then go to localhost:4466 to test mutations
 
 Here are some example queries and mutations:
-
-```query getAllChars {
+```
+query getAllChars {
   owcharacters {
     _id
     name
